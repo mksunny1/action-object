@@ -18,7 +18,7 @@
 
 #### Defined in
 
-action-object/src/action-object.ts:64
+[action-object/src/action-object.ts:64](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L64)
 
 ***
 
@@ -28,7 +28,7 @@ action-object/src/action-object.ts:64
 
 #### Defined in
 
-action-object/src/action-object.ts:63
+[action-object/src/action-object.ts:63](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L63)
 
 ***
 
@@ -42,4 +42,4 @@ action-object/src/action-object.ts:63
 
 #### Defined in
 
-action-object/src/action-object.ts:7
+[action-object/src/action-object.ts:7](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L7)

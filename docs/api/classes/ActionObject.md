@@ -35,7 +35,7 @@ const actionObject = new ActionObject(object);
 
 #### Defined in
 
-action-object/src/action-object.ts:120
+[action-object/src/action-object.ts:120](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L120)
 
 ## Properties
 
@@ -48,7 +48,7 @@ of the object wrapped by this action object.
 
 #### Defined in
 
-action-object/src/action-object.ts:210
+[action-object/src/action-object.ts:210](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L210)
 
 ***
 
@@ -61,7 +61,7 @@ object wrapped by this class action.
 
 #### Defined in
 
-action-object/src/action-object.ts:108
+[action-object/src/action-object.ts:108](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L108)
 
 ***
 
@@ -73,7 +73,7 @@ The wrapped object
 
 #### Defined in
 
-action-object/src/action-object.ts:102
+[action-object/src/action-object.ts:102](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L102)
 
 ***
 
@@ -86,7 +86,7 @@ of the object wrapped by this action object.
 
 #### Defined in
 
-action-object/src/action-object.ts:142
+[action-object/src/action-object.ts:142](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L142)
 
 ***
 
@@ -98,7 +98,7 @@ The string for separating property keys in nested paths.
 
 #### Defined in
 
-action-object/src/action-object.ts:97
+[action-object/src/action-object.ts:97](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L97)
 
 ## Methods
 
@@ -128,7 +128,7 @@ actionObject.act();    // count === 2
 
 #### Defined in
 
-action-object/src/action-object.ts:136
+[action-object/src/action-object.ts:136](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L136)
 
 ***
 
@@ -168,7 +168,7 @@ proxy.a = 25;      // object.a === 25 && count === 25
 
 #### Defined in
 
-action-object/src/action-object.ts:407
+[action-object/src/action-object.ts:407](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L407)
 
 ***
 
@@ -205,7 +205,7 @@ actionObject.call('push', 4, 5, 6, 7);
 
 #### Defined in
 
-action-object/src/action-object.ts:231
+[action-object/src/action-object.ts:231](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L231)
 
 ***
 
@@ -238,7 +238,7 @@ actionObject.callValue('c.d.pop');    // 4
 
 #### Defined in
 
-action-object/src/action-object.ts:317
+[action-object/src/action-object.ts:317](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L317)
 
 ***
 
@@ -268,7 +268,7 @@ proxy.a = 25;      // object.a === 25 && count === 25
 
 #### Defined in
 
-action-object/src/action-object.ts:255
+[action-object/src/action-object.ts:255](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L255)
 
 ***
 
@@ -290,7 +290,7 @@ adds it to `this.children`.
 
 #### Defined in
 
-action-object/src/action-object.ts:348
+[action-object/src/action-object.ts:348](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L348)
 
 ***
 
@@ -308,7 +308,7 @@ to an array; else it is initialized to an object.
 
 #### Defined in
 
-action-object/src/action-object.ts:336
+[action-object/src/action-object.ts:336](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L336)
 
 ***
 
@@ -342,7 +342,7 @@ actionObject.getChild('c.d', true);    // ActionObject { object: [3, 4] }
 
 #### Defined in
 
-action-object/src/action-object.ts:373
+[action-object/src/action-object.ts:373](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L373)
 
 ***
 
@@ -371,7 +371,7 @@ actionObject.getValue('c.d');    // 3
 
 #### Defined in
 
-action-object/src/action-object.ts:289
+[action-object/src/action-object.ts:289](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L289)
 
 ***
 
@@ -403,7 +403,7 @@ actionObject.has('d');    // false
 
 #### Defined in
 
-action-object/src/action-object.ts:272
+[action-object/src/action-object.ts:272](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L272)
 
 ***
 
@@ -441,7 +441,7 @@ actionObject.set('a', 25);  // object.a === 25 && count === 25
 
 #### Defined in
 
-action-object/src/action-object.ts:163
+[action-object/src/action-object.ts:163](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L163)
 
 ***
 
@@ -474,4 +474,4 @@ actionObject.setAll({ a: 25, b: 50 });
 
 #### Defined in
 
-action-object/src/action-object.ts:200
+[action-object/src/action-object.ts:200](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L200)
