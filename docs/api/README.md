@@ -9,44 +9,12 @@ This is a simple library for creating reactive objects. It helps to create objec
 An action object is an object with `set` and `call` [class-actions](https://github.com/mksunny1/class-action) which are triggered when the corresponding properties are set or methods are invoked. The object may additionally or alternatively contain a `children` object which maps its keys to nested action objects. The nesting can run to any depth, so that any object can be wrapped with an action object. We have used action-action to implement a transparent and extensible reactivity system in [action-component](https://github.com/mksunny1/action-component).
 
 ## Installation
-
-You can get action-object in 3 ways:
-
-### CDN (GitHub Pages)
-
-No installation required. 
-
-### NPM
-
 `npm i action-object`
-
-### Direct download
-
-Download or clone the repository. 
 
 ## Usage
 
-### Import from a CDN
-```js
-import { ActionObject } from "mksunny1.github.io/action-object/dist/action-object.js";
-```
-
-### Import from node_modules
-
 ```js
 import { ActionObject } from "action-object";
-```
-
-### Import from a local directory
-
-```js
-import { ActionObject } from "/action-object/dist/action-object.js";
-```
-
-### Create an action object.
-
-```js
-
 const myObject = { a: 1, b: 2 }
 const myActionObject = new ActionObject(myObject);
 myActionObject.addActions('b', [
