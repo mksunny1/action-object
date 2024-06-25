@@ -62,6 +62,7 @@ export class ObjectPropAction extends ClassAction<IObjectPropActionContext> {
 export interface IObjectCallActionContext extends IObjectActionContext {
     method: IKey;
     args?: any[];
+    value?: any;
 }
 
 /**
@@ -80,8 +81,8 @@ export interface IObjectCallActionContext extends IObjectActionContext {
 export class ObjectCallAction extends ClassAction<IObjectCallActionContext> {
     doAction(context?: IObjectCallActionContext) {
         const object = context?.object;
-        if (object && context.args) return object[context.method](...context.args);
-        else if (object) return object[context.method]();
+        if (object && context.args) return context.value = object[context.method](...context.args);
+        else if (object) return context.value = object[context.method]();
     }
 }
 

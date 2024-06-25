@@ -44,6 +44,7 @@ export declare class ObjectPropAction extends ClassAction<IObjectPropActionConte
 export interface IObjectCallActionContext extends IObjectActionContext {
     method: IKey;
     args?: any[];
+    value?: any;
 }
 /**
  * A class-action that invokes an object method. If the context contains

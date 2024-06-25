@@ -64,9 +64,9 @@ export class ObjectCallAction extends ClassAction {
     doAction(context) {
         const object = context?.object;
         if (object && context.args)
-            return object[context.method](...context.args);
+            return context.value = object[context.method](...context.args);
         else if (object)
-            return object[context.method]();
+            return context.value = object[context.method]();
     }
 }
 /**
