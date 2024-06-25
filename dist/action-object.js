@@ -137,12 +137,22 @@ export class ActionObject {
         else {
             this.object = value;
             if (typeof value === 'object' && (this.hasOwnProperty('setActions') || this.hasOwnProperty('children'))) {
-                for (let subKey of Object.keys(this.setActions)) {
+                const keys = new Set();
+                for (let key of Object.keys(this.setActions || {}))
+                    keys.add(key);
+                for (let key of Object.keys(this.children || {}))
+                    keys.add(key);
+                for (let subKey of keys) {
                     this.set(subKey, value[subKey]);
                 }
             }
             else if (this.hasOwnProperty('setActions') || this.hasOwnProperty('children')) {
-                for (let subKey of Object.keys(this.setActions)) {
+                const keys = new Set();
+                for (let key of Object.keys(this.setActions || {}))
+                    keys.add(key);
+                for (let key of Object.keys(this.children || {}))
+                    keys.add(key);
+                for (let subKey of keys) {
                     this.set(subKey, undefined);
                 }
             }
