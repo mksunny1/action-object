@@ -171,11 +171,11 @@ export class ActionObject {
             this.children?.[key]?.set('', value);
         } else {
             this.object = value;
-            if (typeof value === 'object' && this.setActions) {
+            if (typeof value === 'object' && (this.hasOwnProperty('setActions') || this.hasOwnProperty('children'))) {
                 for (let subKey of Object.keys(this.setActions)) {
                     this.set(subKey, value[subKey]);
                 }
-            } else if (this.setActions) {
+            } else if (this.hasOwnProperty('setActions') || this.hasOwnProperty('children')) {
                 for (let subKey of Object.keys(this.setActions)) {
                     this.set(subKey, undefined);
                 }
