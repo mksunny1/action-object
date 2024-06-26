@@ -105,11 +105,16 @@ export class ActionObject {
      * actionObject.act();    // count === 2
      */
     act() { this.set('', this.object); }
-    onSet(key, value) {
+    doSet(key, value) {
         if (!this.setActions.hasOwnProperty(key)) {
             this.setActions[key] = new ObjectPropAction();
         }
-        this.setActions?.[key]?.act({ object: this.object, key, value });
+        let object = this.object;
+        if (key === '') {
+            key = 'object';
+            object = this;
+        }
+        this.setActions?.[key]?.act({ object, key, value });
         this.children?.[key]?.set('', value);
     }
     /**
@@ -135,34 +140,18 @@ export class ActionObject {
         if (!this.hasOwnProperty('setActions'))
             this.setActions = {};
         if (key !== '') {
-            this.onSet(key, value);
+            this.doSet(key, value);
         }
         else {
-            this.object = value;
-            if (typeof value === 'object' && (this.hasOwnProperty('setActions') || this.hasOwnProperty('children'))) {
-                const keys = new Set();
-                for (let key of Object.keys(this.setActions || {}))
-                    keys.add(key);
-                for (let key of Object.keys(this.children || {}))
-                    keys.add(key);
-                for (let subKey of keys) {
+            if (this.hasOwnProperty('setActions') || this.hasOwnProperty('children')) {
+                for (let subKey of Object.keys(this.setActions || {})) {
                     if (subKey === '')
-                        this.onSet(subKey, value); // to avoid infinite recursion.
+                        this.setActions?.[subKey]?.act({ object: this, key: 'value', value });
                     else
-                        this.set(subKey, value[subKey]);
+                        this.setActions?.[subKey]?.act({ object: this.object, key: subKey, value: value[subKey] });
                 }
-            }
-            else if (this.hasOwnProperty('setActions') || this.hasOwnProperty('children')) {
-                const keys = new Set();
-                for (let key of Object.keys(this.setActions || {}))
-                    keys.add(key);
-                for (let key of Object.keys(this.children || {}))
-                    keys.add(key);
-                for (let subKey of keys) {
-                    if (subKey === '')
-                        this.onSet(subKey, undefined);
-                    else
-                        this.set(subKey, undefined);
+                for (let subKey of Object.keys(this.children || {})) {
+                    this.children?.[subKey].set('', (subKey === '') ? value : value[subKey]);
                 }
             }
         }
@@ -394,9 +383,7 @@ export class ActionObject {
                 this[actionsOfType] = {};
             const map = this[actionsOfType];
             if (!(map.hasOwnProperty(parts0))) {
-                if (parts0 === '')
-                    map[parts0] = new ClassAction();
-                else if (type === 'set') {
+                if (type === 'set') {
                     map[parts0] = new ObjectPropAction();
                 }
                 else {
