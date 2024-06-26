@@ -394,7 +394,9 @@ export class ActionObject {
                 this[actionsOfType] = {};
             const map = this[actionsOfType];
             if (!(map.hasOwnProperty(parts0))) {
-                if (type === 'set') {
+                if (parts0 === '')
+                    map[parts0] = new ClassAction();
+                else if (type === 'set') {
                     map[parts0] = new ObjectPropAction();
                 }
                 else {

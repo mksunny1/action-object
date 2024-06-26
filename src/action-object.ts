@@ -428,7 +428,8 @@ export class ActionObject {
             if (!this[actionsOfType]) this[actionsOfType] = {};
             const map = this[actionsOfType] as any;
             if (!(map.hasOwnProperty(parts0))) {
-                if (type ==='set') {
+                if (parts0 === '') (map as any)[parts0] = new ClassAction();
+                else if (type ==='set') {
                     (map as any)[parts0] = new ObjectPropAction()
                 } else {
                     map[parts0] = new ObjectCallAction();
