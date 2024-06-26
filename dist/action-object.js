@@ -105,6 +105,13 @@ export class ActionObject {
      * actionObject.act();    // count === 2
      */
     act() { this.set('', this.object); }
+    onSet(key, value) {
+        if (!this.setActions.hasOwnProperty(key)) {
+            this.setActions[key] = new ObjectPropAction();
+        }
+        this.setActions?.[key]?.act({ object: this.object, key, value });
+        this.children?.[key]?.set('', value);
+    }
     /**
      * Assigns the value to the property with the key and trigger
      * actions (and nested actions) bound to the key. The special
@@ -128,11 +135,7 @@ export class ActionObject {
         if (!this.hasOwnProperty('setActions'))
             this.setActions = {};
         if (key !== '') {
-            if (!this.setActions.hasOwnProperty(key)) {
-                this.setActions[key] = new ObjectPropAction();
-            }
-            this.setActions?.[key]?.act({ object: this.object, key, value });
-            this.children?.[key]?.set('', value);
+            this.onSet(key, value);
         }
         else {
             this.object = value;
@@ -143,7 +146,10 @@ export class ActionObject {
                 for (let key of Object.keys(this.children || {}))
                     keys.add(key);
                 for (let subKey of keys) {
-                    this.set(subKey, value[subKey]);
+                    if (subKey === '')
+                        this.onSet(subKey, value); // to avoid infinite recursion.
+                    else
+                        this.set(subKey, value[subKey]);
                 }
             }
             else if (this.hasOwnProperty('setActions') || this.hasOwnProperty('children')) {
@@ -153,7 +159,10 @@ export class ActionObject {
                 for (let key of Object.keys(this.children || {}))
                     keys.add(key);
                 for (let subKey of keys) {
-                    this.set(subKey, undefined);
+                    if (subKey === '')
+                        this.onSet(subKey, undefined);
+                    else
+                        this.set(subKey, undefined);
                 }
             }
         }

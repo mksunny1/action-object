@@ -112,6 +112,7 @@ export declare class ActionObject {
      * of the object wrapped by this action object.
      */
     setActions?: IMap<ClassAction<IObjectPropActionContext>>;
+    onSet(key: IKey, value: any): void;
     /**
      * Assigns the value to the property with the key and trigger
      * actions (and nested actions) bound to the key. The special
