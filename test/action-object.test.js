@@ -95,7 +95,7 @@ describe('ActionObject.constructor', async (t) => {
 
 });
 
-describe('ActionObject.addAction', async (t) => {
+describe('ActionObject.addActions', async (t) => {
     await it('Should add the specified set action correctly', (t) => {
         const reactionObject = {};
         const object = { a: 1, b: 99 }
@@ -116,6 +116,54 @@ describe('ActionObject.addAction', async (t) => {
         actionObject.getChild('a.b').call( 'push', 9, 7, 5);
         assert.deepEqual(object.a.b, [1, 2, 3, 9, 7, 5]);
         assert.deepEqual(reactionObject, [9, 7, 5]);
+    });
+    await it('Should add the specified keyed set action correctly', (t) => {
+        const reactionObject = {};
+        const object = { a: 1, b: 99 }
+        const actionObject = new ActionObject(object);
+        const action = { act(context) { reactionObject[context.key] = context.value } };
+        actionObject.addActions('a', [action], 'set', 'k1');
+        assert.equal(actionObject.setActions?.['a'].keyedReactions?.['k1'][0], action)
+        actionObject.set( 'a', 78 );
+        assert.equal(object.a, 78);
+        assert.equal(reactionObject.a, 78);
+    });
+    await it('Should add the specified keyed call action correctly', (t) => {
+        const reactionObject = [];
+        const object = { a: {b: [1, 2, 3]} }
+        const actionObject = new ActionObject(object);
+        const action  = { act(context) { reactionObject[context.method](...context.args) } };
+        actionObject.addActions('a.b.push', [action], 'call', 'k1');
+        assert.equal(actionObject.getChild('a.b').callActions?.['push'].keyedReactions?.['k1'][0], action)
+        assert.throws(() => actionObject.call( 'push', 9, 7, 5));   // push not a method here
+        assert.throws(() => actionObject.getChild('a').call( 'push', 9, 7, 5));   // push not a method here
+        assert.throws(() => actionObject.getChild('b', true).call( 'push', 9, 7, 5));   // push not a method here
+        actionObject.getChild('a.b').call( 'push', 9, 7, 5);
+        assert.deepEqual(object.a.b, [1, 2, 3, 9, 7, 5]);
+        assert.deepEqual(reactionObject, [9, 7, 5]);
+    });
+});
+
+describe('ActionObject.removeActions', async (t) => {
+    await it('Should remove the specified keyed set action correctly', (t) => {
+        const reactionObject = {};
+        const object = { a: 1, b: 99 }
+        const actionObject = new ActionObject(object);
+        const action = { act(context) { reactionObject[context.key] = context.value } };
+        actionObject.addActions('a', [action], 'set', 'k1');
+        assert.equal(actionObject.setActions?.['a'].keyedReactions?.['k1'][0], action)
+        actionObject.removeActions('k1');
+        assert.equal(actionObject.setActions['a'].keyedReactions.hasOwnProperty('k1'), false);
+    });
+    await it('Should remove the specified keyed call action correctly', (t) => {
+        const reactionObject = [];
+        const object = { a: {b: [1, 2, 3]} }
+        const actionObject = new ActionObject(object);
+        const action  = { act(context) { reactionObject[context.method](...context.args) } };
+        actionObject.addActions('a.b.push', [action], 'call', 'k1');
+        assert.equal(actionObject.getChild('a.b').callActions?.['push'].keyedReactions?.['k1'][0], action)
+        actionObject.removeActions('k1');
+        assert.equal(actionObject.getChild('a.b').callActions?.['push'].keyedReactions?.hasOwnProperty('k1'), false)
     });
 });
 
@@ -188,6 +236,39 @@ describe('ActionObject.call', async (t) => {
         actionObject.call( 'push', 9, 7, 5);
         assert.deepEqual(object, [1, 2, 3, 9, 7, 5]);
         assert.deepEqual(reactionObject, [9, 7, 5]);
+    });
+});
+
+describe('ActionObject.delete', async (t) => {
+    await it('Should delete the object property', (t) => {
+        const object = { a: 1, b: 99 }
+        const actionObject = new ActionObject(object);
+        actionObject.delete( 'a' );
+        assert.equal(object.hasOwnProperty('a'), false);
+    });
+    await it('Should delete the set actions', (t) => {
+        const object = { a: 1, b: 99 }
+        const actionObject = new ActionObject(object);
+        actionObject.addActions('a', [{}], 'set');
+        assert.equal(actionObject.setActions.hasOwnProperty('a'), true);
+        actionObject.delete( 'a' );
+        assert.equal(actionObject.setActions.hasOwnProperty('a'), false);
+    });
+    await it('Should delete the call actions', (t) => {
+        const object = { a: 1, b: 99 }
+        const actionObject = new ActionObject(object);
+        actionObject.addActions('a', [{}], 'call');
+        assert.equal(actionObject.callActions.hasOwnProperty('a'), true);
+        actionObject.delete( 'a' );
+        assert.equal(actionObject.callActions.hasOwnProperty('a'), false);
+    });
+    await it('Should delete the children', (t) => {
+        const object = { a: 1, b: 99 }
+        const actionObject = new ActionObject(object);
+        actionObject.getChild('a', true);
+        assert.equal(actionObject.children.hasOwnProperty('a'), true);
+        actionObject.delete( 'a' );
+        assert.equal(actionObject.children.hasOwnProperty('a'), false);
     });
 });
 

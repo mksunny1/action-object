@@ -288,9 +288,44 @@ export declare class ActionObject {
      * @param path
      * @param actions
      * @param type
+     * @param [reactionKey]
      * @returns
      */
-    addActions(path: string, actions: ClassAction<any>[], type: 'set' | 'call'): any;
+    addActions(path: string, actions: ClassAction<any>[], type: 'set' | 'call', reactionKey?: IKey): any;
+    /**
+     * Removes all actions (and nested actions) added with the specified
+     * reaction keys. Reaction keys refer to keys used with keyedReactions
+     * in {@link @module:class-action} and not to keys associated with
+     * the object wrapped by this ActionObject.
+     *
+     * This is a cleanup operation for removing 'scoped actions'
+     * within a large ActionObject, perhaps before adding another set of
+     * scoped actions with the same keys.
+     *
+     * One practical use-case for scoped actions is condition rendering as
+     * as implemented in {@link @module:class-component}.
+     *
+     * @example
+     *
+     *
+     * @param reactionKeys
+     */
+    removeActions(...reactionKeys: IKey[]): void;
+    /**
+     * Removes all object properties, actions and children associated
+     * with the object property keys.
+     *
+     * This is a non-reactive cleanup operation. It can be called on its
+     * own if the associated actions have already become irrelevant (perhaps
+     * after calling `set` with `undefined` or disconnecting bound elements
+     * 'from outside')...
+     *
+     * @example
+     *
+     *
+     * @param keys
+     */
+    delete(...keys: IKey[]): void;
 }
 export declare const target: unique symbol;
 /**

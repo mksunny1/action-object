@@ -407,15 +407,16 @@ export class ActionObject {
      * @param path 
      * @param actions 
      * @param type 
+     * @param [reactionKey]
      * @returns 
      */
-    addActions(path: string, actions: ClassAction<any>[], type: 'set'|'call') {
+    addActions(path: string, actions: ClassAction<any>[], type: 'set'|'call', reactionKey?: IKey) {
         const parts = splitOnce(path, (<typeof ActionObject>this.constructor).pathSep);
         const parts0 = parts[0];
 
         if (parts.length > 1) {
             this.ensureChild(parts0);
-            return this.children?.[parts0].addActions(parts[1], actions, type);
+            return this.children?.[parts0].addActions(parts[1], actions, type, reactionKey);
         } else {
             const actionsOfType = `${type}Actions`;
             if (!this[actionsOfType]) this[actionsOfType] = {};
@@ -427,8 +428,70 @@ export class ActionObject {
                     map[parts0] = new ObjectCallAction();
                 }
             }
-            map[parts0].addReactions(...actions);
+            if (reactionKey === undefined) map[parts0].addReactions(...actions);
+            else map[parts0].addKeyedReactions(reactionKey, ...actions);
             return map[parts0];
+        }
+    }
+    /**
+     * Removes all actions (and nested actions) added with the specified 
+     * reaction keys. Reaction keys refer to keys used with keyedReactions 
+     * in {@link @module:class-action} and not to keys associated with 
+     * the object wrapped by this ActionObject.
+     * 
+     * This is a cleanup operation for removing 'scoped actions'
+     * within a large ActionObject, perhaps before adding another set of 
+     * scoped actions with the same keys. 
+     * 
+     * One practical use-case for scoped actions is condition rendering as 
+     * as implemented in {@link @module:class-component}.
+     * 
+     * @example
+     * 
+     * 
+     * @param reactionKeys 
+     */
+    removeActions(...reactionKeys: IKey[]) {
+        if (this.hasOwnProperty('setActions')) {
+            let action: ClassAction<any>;
+            for (action of Object.values(this.setActions)) {
+                action.removeKeyedReactions(...reactionKeys);
+            }
+        }
+        if (this.hasOwnProperty('callActions')) {
+            let action: ClassAction<any>;
+            for (action of Object.values(this.callActions)) {
+                action.removeKeyedReactions(...reactionKeys);
+            }
+        }
+        if (this.hasOwnProperty('children')) {
+            let child: ActionObject;
+            for (child of Object.values(this.children)) {
+                child.removeActions(...reactionKeys);
+            }
+        }
+    }
+
+    /**
+     * Removes all object properties, actions and children associated 
+     * with the object property keys. 
+     * 
+     * This is a non-reactive cleanup operation. It can be called on its 
+     * own if the associated actions have already become irrelevant (perhaps 
+     * after calling `set` with `undefined` or disconnecting bound elements 
+     * 'from outside')...
+     * 
+     * @example
+     * 
+     * 
+     * @param keys 
+     */
+    delete(...keys: IKey[]) {
+        for (let key of keys) {
+            if (typeof this.object === 'object') delete this.object[key];
+            if (this.hasOwnProperty('setActions')) delete this.setActions[key];
+            if (this.hasOwnProperty('callActions')) delete this.callActions[key];
+            if (this.hasOwnProperty('children')) delete this.children[key];
         }
     }
 }
