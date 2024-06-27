@@ -276,7 +276,7 @@ export class ActionObject {
      */
     has(path: string) {
         const parts = splitOnce(path, (<typeof ActionObject>this.constructor).pathSep);
-        return this.object.hasOwnProperty(parts[0]);
+        return this.object[parts[0]] !== undefined;
     }
 
     /**

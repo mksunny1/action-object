@@ -237,7 +237,7 @@ export class ActionObject {
      */
     has(path) {
         const parts = splitOnce(path, this.constructor.pathSep);
-        return this.object.hasOwnProperty(parts[0]);
+        return this.object[parts[0]] !== undefined;
     }
     /**
      * Returns the value at the path within the wrapped object.

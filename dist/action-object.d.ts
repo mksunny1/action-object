@@ -206,7 +206,7 @@ export declare class ActionObject {
      * @param path
      * @returns
      */
-    has(path: string): any;
+    has(path: string): boolean;
     /**
      * Returns the value at the path within the wrapped object.
      *
