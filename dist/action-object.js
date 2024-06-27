@@ -391,7 +391,7 @@ export class ActionObject {
                 }
             }
             map[parts0].addReactions(...actions);
-            return true;
+            return map[parts0];
         }
     }
 }
