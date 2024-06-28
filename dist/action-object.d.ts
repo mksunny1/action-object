@@ -1,4 +1,4 @@
-import { ClassAction } from "../../class-action/dist/class-action.js";
+import { ClassAction } from "class-action";
 export type IKey = string | number | symbol;
 export type IMap<T extends object> = {
     [key in keyof T]?: any;

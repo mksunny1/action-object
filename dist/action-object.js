@@ -1,4 +1,4 @@
-import { ClassAction } from "../../class-action/dist/class-action.js";
+import { ClassAction } from "class-action";
 /**
  * Split the input string at the first occurrence of the sep string.
  *
@@ -619,3 +619,4 @@ export class CallValueAction extends ValueAction {
         context.path = this.path;
     }
 }
+// todo: add tests for `merge`.

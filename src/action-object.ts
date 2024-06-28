@@ -1,4 +1,4 @@
-import { ClassAction } from "../../class-action/dist/class-action.js";
+import { ClassAction } from "class-action";
 
 export type IKey = string | number | symbol;
 export type IMap<T extends object> = { [key in keyof T]?: any }
@@ -44,7 +44,7 @@ export function splitOnce(str: string, sep: string) {
  * 
  */
 export class ObjectPropAction extends ClassAction<IObjectPropActionContext> {
-    reactionKey(context?: IObjectPropActionContext) {
+    doAction(context?: IObjectPropActionContext) {
         const object = context?.object;
         if (object) {
             if (context.value !== undefined) this.set(object, context.key, context.value);
@@ -79,7 +79,7 @@ export interface IObjectCallActionContext extends IObjectActionContext {
  * 
  */
 export class ObjectCallAction extends ClassAction<IObjectCallActionContext> {
-    reactionKey(context?: IObjectCallActionContext) {
+    doAction(context?: IObjectCallActionContext) {
         const object = context?.object;
         if (object && context.args) return context.value = object[context.method](...context.args);
         else if (object) return context.value = object[context.method]();
@@ -635,7 +635,7 @@ export class ValueAction<T = string> extends ClassAction<any> {
  * 
  */
 export class GetValueAction extends ValueAction {
-    reactionKey(context?: any) {
+    doAction(context?: any) {
         context.value = getValue(this.path, ...this.roots);
         context.path = this.path;
     }
@@ -655,11 +655,10 @@ export class GetValueAction extends ValueAction {
  * 
  */
 export class CallValueAction extends ValueAction<string | ICallValueWhat> {
-    reactionKey(context?: any) {
+    doAction(context?: any) {
         context.value = callValue(this.path, ...this.roots);
         context.path = this.path;
     }
 }
 
 // todo: add tests for `merge`.
-
