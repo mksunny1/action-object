@@ -6,12 +6,11 @@
 
 This is a simple library for creating reactive objects. It helps to create objects with method or property descriptor logic that may need to be modified later without introducing performance issues from multiple code compilation. The library also exports some object-related class-actions and utility functions.
 
-An action object is an object with `set` and `call` [class-actions](https://github.com/mksunny1/class-action) which are triggered when the corresponding properties are set or methods are invoked. The object may additionally or alternatively contain a `children` object which maps its keys to nested action objects. The nesting can run to any depth, so that any object can be wrapped with an action object. We have used action-action to implement a transparent and extensible reactivity system in [action-component](https://github.com/mksunny1/action-component).
+An action object is an object with `set` and `call` [class-actions](https://github.com/mksunny1/class-action) which are triggered when the corresponding properties are set or methods are invoked. The object may additionally or alternatively contain a `children` object which maps its keys to nested action objects. The nesting can run to any depth, so that any object can be wrapped with an action object. We have used action-action to implement a transparent and extensible reactivity system in [active-component](https://github.com/mksunny1/active-component).
 
 ## Installation
 
 `npm i action-object`
-
 
 ## Usage
 

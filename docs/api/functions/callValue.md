@@ -38,4 +38,4 @@ callValue('d.e.f.pop', new ActionObject({}), actionObject);   // 88
 
 ## Defined in
 
-[action-object/src/action-object.ts:492](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L492)
+[src/action-object.ts:604](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L604)

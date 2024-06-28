@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[action-object/src/action-object.ts:64](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L64)
+[src/action-object.ts:64](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L64)
 
 ***
 
@@ -28,7 +28,7 @@
 
 #### Defined in
 
-[action-object/src/action-object.ts:63](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L63)
+[src/action-object.ts:63](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L63)
 
 ***
 
@@ -42,4 +42,14 @@
 
 #### Defined in
 
-[action-object/src/action-object.ts:7](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L7)
+[src/action-object.ts:7](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L7)
+
+***
+
+### value?
+
+> `optional` **value**: `any`
+
+#### Defined in
+
+[src/action-object.ts:65](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L65)

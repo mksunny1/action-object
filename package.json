@@ -1,6 +1,6 @@
 {
   "name": "action-object",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A simple library for creating reactive objects",
   "main": "dist/action-object.js",
   "files": [
@@ -42,6 +42,6 @@
     "typescript": "^5.5.2"
   },
   "dependencies": {
-    "class-action": "^1.0.0"
+    "class-action": "^1.0.2"
   }
 }

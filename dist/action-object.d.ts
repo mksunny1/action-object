@@ -314,7 +314,7 @@ export declare class ActionObject {
     /**
      * Removes all actions (and nested actions) added with the specified
      * reaction keys. Reaction keys refer to keys used with keyedReactions
-     * in {@link @module:class-action} and not to keys associated with
+     * in {@module:class-action} and not to keys associated with
      * the object wrapped by this ActionObject.
      *
      * This is a cleanup operation for removing 'scoped actions'
@@ -322,7 +322,7 @@ export declare class ActionObject {
      * scoped actions with the same keys.
      *
      * One practical use-case for scoped actions is condition rendering as
-     * as implemented in {@link @module:class-component}.
+     * as implemented in {@module:active-component}.
      *
      * @example
      *

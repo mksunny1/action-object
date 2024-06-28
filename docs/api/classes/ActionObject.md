@@ -35,7 +35,7 @@ const actionObject = new ActionObject(object);
 
 #### Defined in
 
-[action-object/src/action-object.ts:120](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L120)
+[src/action-object.ts:121](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L121)
 
 ## Properties
 
@@ -48,7 +48,7 @@ of the object wrapped by this action object.
 
 #### Defined in
 
-[action-object/src/action-object.ts:210](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L210)
+[src/action-object.ts:224](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L224)
 
 ***
 
@@ -61,7 +61,7 @@ object wrapped by this class action.
 
 #### Defined in
 
-[action-object/src/action-object.ts:108](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L108)
+[src/action-object.ts:109](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L109)
 
 ***
 
@@ -73,7 +73,7 @@ The wrapped object
 
 #### Defined in
 
-[action-object/src/action-object.ts:102](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L102)
+[src/action-object.ts:103](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L103)
 
 ***
 
@@ -86,7 +86,7 @@ of the object wrapped by this action object.
 
 #### Defined in
 
-[action-object/src/action-object.ts:142](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L142)
+[src/action-object.ts:143](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L143)
 
 ***
 
@@ -98,7 +98,7 @@ The string for separating property keys in nested paths.
 
 #### Defined in
 
-[action-object/src/action-object.ts:97](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L97)
+[src/action-object.ts:98](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L98)
 
 ## Methods
 
@@ -128,13 +128,13 @@ actionObject.act();    // count === 2
 
 #### Defined in
 
-[action-object/src/action-object.ts:136](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L136)
+[src/action-object.ts:137](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L137)
 
 ***
 
 ### addActions()
 
-> **addActions**(`path`, `actions`, `type`): `any`
+> **addActions**(`path`, `actions`, `type`, `reactionKey`?): `any`
 
 Adds the given actions at the path. The actions are either added to 
 the `setActions` or `callActions` object property of this action object 
@@ -148,6 +148,8 @@ and path.
 • **actions**: `ClassAction`\<`any`\>[]
 
 • **type**: `"set"` \| `"call"`
+
+• **reactionKey?**: [`IKey`](../type-aliases/IKey.md)
 
 #### Returns
 
@@ -168,7 +170,7 @@ proxy.a = 25;      // object.a === 25 && count === 25
 
 #### Defined in
 
-[action-object/src/action-object.ts:407](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L407)
+[src/action-object.ts:457](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L457)
 
 ***
 
@@ -205,7 +207,7 @@ actionObject.call('push', 4, 5, 6, 7);
 
 #### Defined in
 
-[action-object/src/action-object.ts:231](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L231)
+[src/action-object.ts:245](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L245)
 
 ***
 
@@ -238,7 +240,7 @@ actionObject.callValue('c.d.pop');    // 4
 
 #### Defined in
 
-[action-object/src/action-object.ts:317](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L317)
+[src/action-object.ts:331](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L331)
 
 ***
 
@@ -268,7 +270,68 @@ proxy.a = 25;      // object.a === 25 && count === 25
 
 #### Defined in
 
-[action-object/src/action-object.ts:255](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L255)
+[src/action-object.ts:269](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L269)
+
+***
+
+### delete()
+
+> **delete**(...`keys`): `void`
+
+Removes all object properties, actions and children associated 
+with the object property keys. 
+
+This is a non-reactive cleanup operation. It can be called on its 
+own if the associated actions have already become irrelevant (perhaps 
+after calling `set` with `undefined` or disconnecting bound elements 
+'from outside')...
+
+#### Parameters
+
+• ...**keys**: [`IKey`](../type-aliases/IKey.md)[]
+
+#### Returns
+
+`void`
+
+#### Example
+
+```ts
+
+```
+
+#### Defined in
+
+[src/action-object.ts:533](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L533)
+
+***
+
+### doSet()
+
+> **doSet**(`key`, `value`): `void`
+
+Cal this method to explicitly set a property and trigger actions.
+No special handling of the empty string key here unlike in `set`.
+
+#### Parameters
+
+• **key**: [`IKey`](../type-aliases/IKey.md)
+
+• **value**: `any`
+
+#### Returns
+
+`void`
+
+#### Example
+
+```ts
+
+```
+
+#### Defined in
+
+[src/action-object.ts:155](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L155)
 
 ***
 
@@ -290,7 +353,7 @@ adds it to `this.children`.
 
 #### Defined in
 
-[action-object/src/action-object.ts:348](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L348)
+[src/action-object.ts:362](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L362)
 
 ***
 
@@ -308,7 +371,7 @@ to an array; else it is initialized to an object.
 
 #### Defined in
 
-[action-object/src/action-object.ts:336](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L336)
+[src/action-object.ts:350](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L350)
 
 ***
 
@@ -342,7 +405,7 @@ actionObject.getChild('c.d', true);    // ActionObject { object: [3, 4] }
 
 #### Defined in
 
-[action-object/src/action-object.ts:373](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L373)
+[src/action-object.ts:387](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L387)
 
 ***
 
@@ -371,13 +434,13 @@ actionObject.getValue('c.d');    // 3
 
 #### Defined in
 
-[action-object/src/action-object.ts:289](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L289)
+[src/action-object.ts:303](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L303)
 
 ***
 
 ### has()
 
-> **has**(`path`): `any`
+> **has**(`path`): `boolean`
 
 Returns `true` if the property at the path eists in the wrapped 
 object; otherwise returns `false`.
@@ -388,7 +451,7 @@ object; otherwise returns `false`.
 
 #### Returns
 
-`any`
+`boolean`
 
 #### Example
 
@@ -403,7 +466,69 @@ actionObject.has('d');    // false
 
 #### Defined in
 
-[action-object/src/action-object.ts:272](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L272)
+[src/action-object.ts:286](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L286)
+
+***
+
+### merge()
+
+> **merge**(...`actionObjects`): `void`
+
+Merges the content of the other action objects into this one.
+
+#### Parameters
+
+• ...**actionObjects**: [`ActionObject`](ActionObject.md)[]
+
+#### Returns
+
+`void`
+
+#### Example
+
+```ts
+
+```
+
+#### Defined in
+
+[src/action-object.ts:407](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L407)
+
+***
+
+### removeActions()
+
+> **removeActions**(...`reactionKeys`): `void`
+
+Removes all actions (and nested actions) added with the specified 
+reaction keys. Reaction keys refer to keys used with keyedReactions 
+in {@module:class-action} and not to keys associated with 
+the object wrapped by this ActionObject.
+
+This is a cleanup operation for removing 'scoped actions'
+within a large ActionObject, perhaps before adding another set of 
+scoped actions with the same keys. 
+
+One practical use-case for scoped actions is condition rendering as 
+as implemented in {@module:active-component}.
+
+#### Parameters
+
+• ...**reactionKeys**: [`IKey`](../type-aliases/IKey.md)[]
+
+#### Returns
+
+`void`
+
+#### Example
+
+```ts
+
+```
+
+#### Defined in
+
+[src/action-object.ts:498](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L498)
 
 ***
 
@@ -441,7 +566,7 @@ actionObject.set('a', 25);  // object.a === 25 && count === 25
 
 #### Defined in
 
-[action-object/src/action-object.ts:163](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L163)
+[src/action-object.ts:183](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L183)
 
 ***
 
@@ -474,4 +599,4 @@ actionObject.setAll({ a: 25, b: 50 });
 
 #### Defined in
 
-[action-object/src/action-object.ts:200](https://github.com/mksunny1/action-object/blob/d3b79ef45403db2af53250402a32918daa4abb39/src/action-object.ts#L200)
+[src/action-object.ts:214](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L214)
