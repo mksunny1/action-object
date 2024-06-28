@@ -112,6 +112,16 @@ export declare class ActionObject {
      * of the object wrapped by this action object.
      */
     setActions?: IMap<ClassAction<IObjectPropActionContext>>;
+    /**
+     * Cal this method to explicitly set a property and trigger actions.
+     * No special handling of the empty string key here unlike in `set`.
+     *
+     * @example
+     *
+     *
+     * @param key
+     * @param value
+     */
     doSet(key: IKey, value: any): void;
     /**
      * Assigns the value to the property with the key and trigger
@@ -269,6 +279,15 @@ export declare class ActionObject {
      * @returns
      */
     getChild(path: string, forceChild?: boolean): any;
+    /**
+     * Merges the content of the other action objects into this one.
+     *
+     * @example
+     *
+     *
+     * @param actionObjects
+     */
+    merge(...actionObjects: ActionObject[]): void;
     /**
      * Adds the given actions at the path. The actions are either added to
      * the `setActions` or `callActions` object property of this action object

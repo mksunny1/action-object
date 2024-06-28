@@ -105,15 +105,23 @@ export class ActionObject {
      * actionObject.act();    // count === 2
      */
     act() { this.set('', this.object); }
+    /**
+     * Cal this method to explicitly set a property and trigger actions.
+     * No special handling of the empty string key here unlike in `set`.
+     *
+     * @example
+     *
+     *
+     * @param key
+     * @param value
+     */
     doSet(key, value) {
+        if (!this.hasOwnProperty('setActions'))
+            this.setActions = {};
         if (!this.setActions.hasOwnProperty(key)) {
             this.setActions[key] = new ObjectPropAction();
         }
         let object = this.object;
-        if (key === '') {
-            key = 'object';
-            object = this;
-        }
         this.setActions?.[key]?.act({ object, key, value });
         this.children?.[key]?.set('', value);
     }
@@ -137,21 +145,17 @@ export class ActionObject {
      * @param {*} value
      */
     set(key, value) {
-        if (!this.hasOwnProperty('setActions'))
-            this.setActions = {};
         if (key !== '') {
             this.doSet(key, value);
         }
         else {
+            this.object = value;
             if (this.hasOwnProperty('setActions') || this.hasOwnProperty('children')) {
                 for (let subKey of Object.keys(this.setActions || {})) {
-                    if (subKey === '')
-                        this.setActions?.[subKey]?.act({ object: this, key: 'value', value });
-                    else
-                        this.setActions?.[subKey]?.act({ object: this.object, key: subKey, value: value[subKey] });
+                    this.setActions?.[subKey]?.act({ object: this.object, key: subKey, value: value[subKey] });
                 }
                 for (let subKey of Object.keys(this.children || {})) {
-                    this.children?.[subKey].set('', (subKey === '') ? value : value[subKey]);
+                    this.children?.[subKey].set('', value[subKey]);
                 }
             }
         }
@@ -347,6 +351,43 @@ export class ActionObject {
         }
         else {
             return this.children[parts0];
+        }
+    }
+    /**
+     * Merges the content of the other action objects into this one.
+     *
+     * @example
+     *
+     *
+     * @param actionObjects
+     */
+    merge(...actionObjects) {
+        for (let actionObject of actionObjects) {
+            let actionTypeProp;
+            for (let actionType of ['set', 'call']) {
+                actionTypeProp = actionType + 'Actions';
+                if (!actionObject.hasOwnProperty(actionTypeProp))
+                    continue;
+                if (this.hasOwnProperty(actionTypeProp))
+                    this[actionTypeProp] = {};
+                let key, action;
+                let reactionKey, keyedReactions;
+                for ([key, action] of Object.entries(actionObject[actionTypeProp])) {
+                    this.addActions(key, action.reactions, actionType);
+                    if (action.hasOwnProperty('keyedReactions')) {
+                        for ([reactionKey, keyedReactions] of Object.entries(action.keyedReactions)) {
+                            this.addActions(key, keyedReactions, actionType, reactionKey);
+                        }
+                    }
+                }
+            }
+            // children
+            if (actionObject.hasOwnProperty('children')) {
+                this.ensureChildren();
+                for (let [key, child] of Object.entries(actionObject.children)) {
+                    this.getChild(key, true).merge(child);
+                }
+            }
         }
     }
     /**

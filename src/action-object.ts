@@ -142,12 +142,22 @@ export class ActionObject {
      */
     setActions?: IMap<ClassAction<IObjectPropActionContext>>;
 
+    /**
+     * Cal this method to explicitly set a property and trigger actions.
+     * No special handling of the empty string key here unlike in `set`.
+     * 
+     * @example
+     * 
+     * 
+     * @param key 
+     * @param value 
+     */
     doSet(key: IKey, value: any) {
+        if (!this.hasOwnProperty('setActions')) this.setActions = {};
         if (!this.setActions.hasOwnProperty(key)) {
             this.setActions[key] = new ObjectPropAction();
         }
         let object = this.object;
-        if (key === '') { key = 'object'; object = this }
         this.setActions?.[key]?.act({ object, key, value });
         this.children?.[key]?.set('', value);
     }
@@ -171,17 +181,16 @@ export class ActionObject {
      * @param {*} value 
      */
     set(key: IKey, value: any) {
-        if (!this.hasOwnProperty('setActions')) this.setActions = {};
         if (key !== '') {
             this.doSet(key, value);
         } else {
+            this.object = value;
             if (this.hasOwnProperty('setActions') || this.hasOwnProperty('children')) {
                 for (let subKey of Object.keys(this.setActions || {})) {
-                    if (subKey === '') this.setActions?.[subKey]?.act({ object: this, key: 'value', value });
-                    else this.setActions?.[subKey]?.act({ object: this.object, key: subKey, value: value[subKey] });
+                    this.setActions?.[subKey]?.act({ object: this.object, key: subKey, value: value[subKey] });
                 }
                 for (let subKey of Object.keys(this.children || {})) {
-                    this.children?.[subKey].set('', (subKey === '')? value: value[subKey])
+                    this.children?.[subKey].set('', value[subKey])
                 }
             }
         }
@@ -387,7 +396,42 @@ export class ActionObject {
             return (this.children as any)[parts0];
         }
     }
-
+    /**
+     * Merges the content of the other action objects into this one.
+     * 
+     * @example
+     * 
+     * 
+     * @param actionObjects 
+     */
+    merge(...actionObjects: ActionObject[]) {
+        for (let actionObject of actionObjects) {
+            let actionTypeProp: string;
+            for (let actionType of ['set', 'call'] as ('set' | 'call')[]) {
+                actionTypeProp = actionType + 'Actions';
+                if (!actionObject.hasOwnProperty(actionTypeProp)) continue;
+                if (this.hasOwnProperty(actionTypeProp)) this[actionTypeProp] = {};
+                
+                let key: string, action: ClassAction<any>;
+                let reactionKey: string, keyedReactions: ClassAction<any>[];
+                for ([key, action] of Object.entries(actionObject[actionTypeProp]) as any) {
+                    this.addActions(key, action.reactions, actionType);
+                    if (action.hasOwnProperty('keyedReactions')) {
+                        for ([reactionKey, keyedReactions] of Object.entries(action.keyedReactions)) {
+                            this.addActions(key, keyedReactions, actionType, reactionKey);
+                        }
+                    }
+                }
+            }
+            // children
+            if (actionObject.hasOwnProperty('children')) {
+                this.ensureChildren()
+                for (let [key, child] of Object.entries(actionObject.children)) {
+                    this.getChild(key, true).merge(child);
+                }
+            }
+        }
+    }
     /**
      * Adds the given actions at the path. The actions are either added to 
      * the `setActions` or `callActions` object property of this action object 
@@ -616,4 +660,6 @@ export class CallValueAction extends ValueAction<string | ICallValueWhat> {
         context.path = this.path;
     }
 }
+
+// todo: add tests for `merge`.
 
