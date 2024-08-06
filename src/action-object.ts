@@ -188,7 +188,7 @@ export class ActionObject {
             if (this.hasOwnProperty('setActions') || this.hasOwnProperty('children')) {
                 if (typeof value !== 'object' && this.setActions.hasOwnProperty('')) {
                     // a special case:
-                    this.setActions[''].act({ object: this.object, key: '', value });
+                    this.setActions[''].act({ object: {}, key: '', value });
                 } else {
                     for (let subKey of Object.keys(this.setActions || {})) {
                         this.setActions?.[subKey]?.act({ object: this.object, key: subKey, value: value[subKey] });
