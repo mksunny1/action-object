@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[src/action-object.ts:11](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L11)
+[src/action-object.ts:11](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/src/action-object.ts#L11)
 
 ***
 
@@ -32,7 +32,7 @@
 
 #### Defined in
 
-[src/action-object.ts:7](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L7)
+[src/action-object.ts:7](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/src/action-object.ts#L7)
 
 ***
 
@@ -42,4 +42,4 @@
 
 #### Defined in
 
-[src/action-object.ts:12](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L12)
+[src/action-object.ts:12](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/src/action-object.ts#L12)

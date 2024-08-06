@@ -143,7 +143,7 @@ export class ActionObject {
     setActions?: IMap<ClassAction<IObjectPropActionContext>>;
 
     /**
-     * Cal this method to explicitly set a property and trigger actions.
+     * Call this method to explicitly set a property and trigger actions.
      * No special handling of the empty string key here unlike in `set`.
      * 
      * @example
@@ -186,8 +186,13 @@ export class ActionObject {
         } else {
             this.object = value;
             if (this.hasOwnProperty('setActions') || this.hasOwnProperty('children')) {
-                for (let subKey of Object.keys(this.setActions || {})) {
-                    this.setActions?.[subKey]?.act({ object: this.object, key: subKey, value: value[subKey] });
+                if (typeof value !== 'object' && this.setActions.hasOwnProperty('')) {
+                    // a special case:
+                    this.setActions[''].act({ object: this.object, key: '', value });
+                } else {
+                    for (let subKey of Object.keys(this.setActions || {})) {
+                        this.setActions?.[subKey]?.act({ object: this.object, key: subKey, value: value[subKey] });
+                    }
                 }
                 for (let subKey of Object.keys(this.children || {})) {
                     this.children?.[subKey].set('', value[subKey])

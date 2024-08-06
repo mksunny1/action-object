@@ -1,6 +1,6 @@
 {
   "name": "action-object",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple library for creating reactive objects",
   "main": "dist/action-object.js",
   "files": [

@@ -40,10 +40,6 @@ Creates a new ClassAction object containing the optionally provided reactions.
 
 [`ObjectCallAction`](ObjectCallAction.md)
 
-#### Inherited from
-
-`ClassAction<IObjectCallActionContext>.constructor`
-
 #### Example
 
 ```ts
@@ -51,9 +47,13 @@ import { ClassAction } from 'class-action'
 const classAction = new ClassAction()
 ```
 
+#### Inherited from
+
+`ClassAction<IObjectCallActionContext>.constructor`
+
 #### Defined in
 
-[node\_modules/class-action/dist/class-action.d.ts:69](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/node_modules/class-action/dist/class-action.d.ts#L69)
+[node\_modules/class-action/dist/class-action.d.ts:69](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/node_modules/class-action/dist/class-action.d.ts#L69)
 
 ## Properties
 
@@ -71,7 +71,7 @@ const classAction = new ClassAction()
 
 #### Defined in
 
-[node\_modules/class-action/dist/class-action.d.ts:57](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/node_modules/class-action/dist/class-action.d.ts#L57)
+[node\_modules/class-action/dist/class-action.d.ts:57](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/node_modules/class-action/dist/class-action.d.ts#L57)
 
 ***
 
@@ -97,7 +97,7 @@ const myClassAction = new ClassAction(reaction1, reaction2);
 
 #### Defined in
 
-[node\_modules/class-action/dist/class-action.d.ts:56](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/node_modules/class-action/dist/class-action.d.ts#L56)
+[node\_modules/class-action/dist/class-action.d.ts:56](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/node_modules/class-action/dist/class-action.d.ts#L56)
 
 ***
 
@@ -128,7 +128,7 @@ const myClassAction2 = new MyClassAction();
 
 #### Defined in
 
-[node\_modules/class-action/dist/class-action.d.ts:44](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/node_modules/class-action/dist/class-action.d.ts#L44)
+[node\_modules/class-action/dist/class-action.d.ts:44](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/node_modules/class-action/dist/class-action.d.ts#L44)
 
 ## Methods
 
@@ -146,10 +146,6 @@ Performs the local action and triggers all reactions.
 
 `any`
 
-#### Inherited from
-
-`ClassAction.act`
-
 #### Example
 
 ```ts
@@ -164,9 +160,13 @@ myClassAction.act({ msg: 'nice work' });
 // prints 'nice work' thrice...
 ```
 
+#### Inherited from
+
+`ClassAction.act`
+
 #### Defined in
 
-[node\_modules/class-action/dist/class-action.d.ts:134](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/node_modules/class-action/dist/class-action.d.ts#L134)
+[node\_modules/class-action/dist/class-action.d.ts:134](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/node_modules/class-action/dist/class-action.d.ts#L134)
 
 ***
 
@@ -192,7 +192,7 @@ Adds the given reactions to the list of reactions with the key.
 
 #### Defined in
 
-[node\_modules/class-action/dist/class-action.d.ts:194](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/node_modules/class-action/dist/class-action.d.ts#L194)
+[node\_modules/class-action/dist/class-action.d.ts:194](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/node_modules/class-action/dist/class-action.d.ts#L194)
 
 ***
 
@@ -211,10 +211,6 @@ more implementation flexibility in derived classes.
 
 `void`
 
-#### Inherited from
-
-`ClassAction.addReactions`
-
 #### Example
 
 ```ts
@@ -230,9 +226,13 @@ myClassAction.addReactions(new MyClassAction())
 myClassAction.act()
 ```
 
+#### Inherited from
+
+`ClassAction.addReactions`
+
 #### Defined in
 
-[node\_modules/class-action/dist/class-action.d.ts:187](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/node_modules/class-action/dist/class-action.d.ts#L187)
+[node\_modules/class-action/dist/class-action.d.ts:187](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/node_modules/class-action/dist/class-action.d.ts#L187)
 
 ***
 
@@ -250,10 +250,6 @@ Performs the local action
 
 `any`
 
-#### Overrides
-
-`ClassAction.doAction`
-
 #### Example
 
 ```ts
@@ -268,9 +264,13 @@ myClassAction.doAction({ msg: 'nice work' });
 // prints 'nice work' once...
 ```
 
+#### Overrides
+
+`ClassAction.doAction`
+
 #### Defined in
 
-[src/action-object.ts:82](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L82)
+[src/action-object.ts:82](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/src/action-object.ts#L82)
 
 ***
 
@@ -288,10 +288,6 @@ Triggers all reactions of this ClassAction
 
 `any`
 
-#### Inherited from
-
-`ClassAction.doReactions`
-
 #### Example
 
 ```ts
@@ -306,9 +302,13 @@ myClassAction.doReactions({ msg: 'nice work' });
 // prints 'nice work' twice...
 ```
 
+#### Inherited from
+
+`ClassAction.doReactions`
+
 #### Defined in
 
-[node\_modules/class-action/dist/class-action.d.ts:168](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/node_modules/class-action/dist/class-action.d.ts#L168)
+[node\_modules/class-action/dist/class-action.d.ts:168](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/node_modules/class-action/dist/class-action.d.ts#L168)
 
 ***
 
@@ -328,10 +328,6 @@ been executed.
 
 `Generator`\<`ClassAction`\<`any`\>, `void`, `unknown`\>
 
-#### Inherited from
-
-`ClassAction.getAllReactions`
-
 #### Example
 
 ```ts
@@ -344,9 +340,13 @@ const myClassAction = new MyClassAction(reaction1, reaction2);
 myClassAction.getAllReactions();
 ```
 
+#### Inherited from
+
+`ClassAction.getAllReactions`
+
 #### Defined in
 
-[node\_modules/class-action/dist/class-action.d.ts:118](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/node_modules/class-action/dist/class-action.d.ts#L118)
+[node\_modules/class-action/dist/class-action.d.ts:118](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/node_modules/class-action/dist/class-action.d.ts#L118)
 
 ***
 
@@ -365,10 +365,6 @@ By default it simply returns [ClassAction#reactions](ObjectPropAction.md#reactio
 
 `Generator`\<`ClassAction`\<`any`\>, `void`, `unknown`\>
 
-#### Inherited from
-
-`ClassAction.getReactions`
-
 #### Example
 
 ```ts
@@ -378,9 +374,13 @@ const myClassAction = new ClassAction(reaction1, reaction2);
 myClassAction.getReactions();
 ```
 
+#### Inherited from
+
+`ClassAction.getReactions`
+
 #### Defined in
 
-[node\_modules/class-action/dist/class-action.d.ts:100](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/node_modules/class-action/dist/class-action.d.ts#L100)
+[node\_modules/class-action/dist/class-action.d.ts:100](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/node_modules/class-action/dist/class-action.d.ts#L100)
 
 ***
 
@@ -404,7 +404,7 @@ Removes the reactions with the specified keys.
 
 #### Defined in
 
-[node\_modules/class-action/dist/class-action.d.ts:213](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/node_modules/class-action/dist/class-action.d.ts#L213)
+[node\_modules/class-action/dist/class-action.d.ts:213](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/node_modules/class-action/dist/class-action.d.ts#L213)
 
 ***
 
@@ -422,10 +422,6 @@ Removes the specified reactions.
 
 `void`
 
-#### Inherited from
-
-`ClassAction.removeReactions`
-
 #### Example
 
 ```ts
@@ -435,9 +431,13 @@ const myClassAction = new ClassAction(reaction1, reaction2);
 myClassAction.removeReactions(reaction2);
 ```
 
+#### Inherited from
+
+`ClassAction.removeReactions`
+
 #### Defined in
 
-[node\_modules/class-action/dist/class-action.d.ts:206](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/node_modules/class-action/dist/class-action.d.ts#L206)
+[node\_modules/class-action/dist/class-action.d.ts:206](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/node_modules/class-action/dist/class-action.d.ts#L206)
 
 ***
 
@@ -462,10 +462,6 @@ By default it simply returns [ClassAction.reactions](ObjectPropAction.md#reactio
 
 `ClassAction`\<`any`\>[]
 
-#### Inherited from
-
-`ClassAction.getReactions`
-
 #### Example
 
 ```ts
@@ -477,6 +473,10 @@ class MyClassAction extends ClassAction {
 MyClassAction.getReactions();
 ```
 
+#### Inherited from
+
+`ClassAction.getReactions`
+
 #### Defined in
 
-[node\_modules/class-action/dist/class-action.d.ts:86](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/node_modules/class-action/dist/class-action.d.ts#L86)
+[node\_modules/class-action/dist/class-action.d.ts:86](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/node_modules/class-action/dist/class-action.d.ts#L86)

@@ -113,7 +113,7 @@ export declare class ActionObject {
      */
     setActions?: IMap<ClassAction<IObjectPropActionContext>>;
     /**
-     * Cal this method to explicitly set a property and trigger actions.
+     * Call this method to explicitly set a property and trigger actions.
      * No special handling of the empty string key here unlike in `set`.
      *
      * @example

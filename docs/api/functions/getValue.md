@@ -32,4 +32,4 @@ getValue('d.e.f', new ActionObject({}), actionObject);   // 88
 
 ## Defined in
 
-[src/action-object.ts:578](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L578)
+[src/action-object.ts:583](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/src/action-object.ts#L583)

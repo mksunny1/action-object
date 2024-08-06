@@ -10,4 +10,4 @@
 
 ## Defined in
 
-[src/action-object.ts:543](https://github.com/mksunny1/action-object/blob/2f994729170d9fd3715cf0f4d8ea6de29c244fed/src/action-object.ts#L543)
+[src/action-object.ts:548](https://github.com/mksunny1/action-object/blob/c0bfb5553eaceeaf077143b5e92f03bc4b891b33/src/action-object.ts#L548)
